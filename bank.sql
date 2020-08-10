@@ -33,7 +33,7 @@ CREATE TABLE `nasabah` (
   PRIMARY KEY (`cif`),
   UNIQUE KEY `nik_UNIQUE` (`nik`),
   UNIQUE KEY `cif_UNIQUE` (`cif`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000000002 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1000000005 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `nasabah` (
 
 LOCK TABLES `nasabah` WRITE;
 /*!40000 ALTER TABLE `nasabah` DISABLE KEYS */;
-INSERT INTO `nasabah` VALUES (1000000000,'3603172102970002','ryan','bandung','2004-02-21','curug','081122334455'),(1000000001,'3603172102970003','suryo','jakarta','2005-02-21','kulon','082222334455');
+INSERT INTO `nasabah` VALUES (1000000000,'3603172102970002','ryan','bandung','2004-02-21','curug','081122334455'),(1000000001,'3603172102970003','suryo','jakarta','2005-02-21','kulon','082222334455'),(1000000002,'3603172102970005','hadi','tangerang','2006-02-21','cikupa','083322334455'),(1000000003,'3603172102970004','projo','cisauk','2007-02-21','tangerang','084422334455');
 /*!40000 ALTER TABLE `nasabah` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,7 +68,7 @@ CREATE TABLE `nasabah_detail` (
 
 LOCK TABLES `nasabah_detail` WRITE;
 /*!40000 ALTER TABLE `nasabah_detail` DISABLE KEYS */;
-INSERT INTO `nasabah_detail` VALUES (1000000000,1760100001,1513500),(1000000001,1760100002,1527500);
+INSERT INTO `nasabah_detail` VALUES (1000000000,1760100001,1513500),(1000000001,1760100002,1527500),(1000000003,1760100003,500000);
 /*!40000 ALTER TABLE `nasabah_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,7 +119,7 @@ CREATE TABLE `user` (
   `cabang` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `id_user_UNIQUE` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=1760011 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1760151 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +128,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1760010,'password','ahmad','teller','jakarta');
+INSERT INTO `user` VALUES (1760010,'password','ahmad','teller','jakarta'),(1760150,'password','ayu','cs','bandung');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,4 +145,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-10 23:52:50
+-- Dump completed on 2020-08-11  4:31:11
