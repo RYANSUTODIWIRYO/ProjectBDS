@@ -323,3 +323,120 @@ func (s *server) PindahBuku(ctx context.Context, transaksiPB *bank.TransaksiPB) 
 		}, nil
 	}
 }
+
+func (s *server) FindByCifOrNik(ctx context.Context, nasabah *bank.Nasabah) (*bank.Nasabah, error) {
+	
+	// Koneksi Database
+	db, err := conf.KoneksiDB()
+	if err != nil {
+		// fmt.Println("errornya di siniiiii")
+		panic(err)
+		// return &bank.User{}, err
+	}
+
+	// Membuat struct koneksi
+	con := serv.UserService{
+		db,
+	}
+	
+	cif := nasabah.Cif
+
+	// Memanggil function FindByCifOrNikService() untuk login
+	response, err := con.FindByCifOrNikService(cif)
+	if err != nil {
+		panic(err)
+	}
+
+	// Membuat struct nasabah untuk dikembalikan
+	fmt.Println(response)
+	n := bank.Nasabah{
+		Cif:           	response.Cif,
+		Nik:           	response.Nik,
+		Nama:          	response.Nama,
+		TempatLahir:	response.Tempat_lahir,
+		TanggalLahir: 	response.Tanggal_lahir,
+		Alamat:        	response.Alamat,
+		NoTelepon:      response.No_telepon,
+	}
+	return &n, nil
+}
+
+func (s *server) BuatCif(ctx context.Context, nasabah *bank.Nasabah) (*bank.Nasabah, error) {
+	
+	// Koneksi Database
+	db, err := conf.KoneksiDB()
+	if err != nil {
+		// fmt.Println("errornya di siniiiii")
+		panic(err)
+		// return &bank.User{}, err
+	}
+
+	// Membuat struct koneksi
+	con := serv.UserService{
+		db,
+	}
+	
+	response, err2 := con.BuatCifService(nasabah)
+	if err2 != nil {
+		panic(err)
+	}
+	fmt.Println(response)
+	nasabah.Cif = response.Cif
+	return nasabah, nil
+}
+
+func (s *server) BuatTabungan(ctx context.Context, nasabah *bank.NasabahDetail) (*bank.NasabahDetail, error) {
+	
+	// Koneksi Database
+	db, err := conf.KoneksiDB()
+	if err != nil {
+		// fmt.Println("errornya di siniiiii")
+		panic(err)
+		// return &bank.User{}, err
+	}
+
+	// Membuat struct koneksi
+	con := serv.UserService{
+		db,
+	}
+	
+	// Melakukan proses
+	response, err := con.BuatTabunganService(nasabah)
+	if err != nil {
+		panic(err)
+	}
+	// Mengambil data dari response 
+	// fmt.Println(response)
+	nasabah.Nama = response.Nama
+	nasabah.NoRekening = response.NoRekening
+
+	return nasabah, nil
+}
+
+func (s *server) UpdateNasabah(ctx context.Context, nasabah *bank.Nasabah) (*bank.Nasabah, error) {
+	
+	// Koneksi Database
+	db, err := conf.KoneksiDB()
+	if err != nil {
+		// fmt.Println("errornya di siniiiii")
+		panic(err)
+		// return &bank.User{}, err
+	}
+
+	// Membuat struct koneksi
+	con := serv.UserService{
+		db,
+	}
+	
+	// Melakukan proses update
+	_, err2 := con.UpdateNasabahService(nasabah)
+	if err2 != nil {
+		panic(err)
+	}
+	// Mengambil data dari response 
+	// fmt.Println(response)
+	// nasabah.Nama = response.Nama
+	// nasabah.NoRekening = response.NoRekening
+
+	return nasabah, nil
+}

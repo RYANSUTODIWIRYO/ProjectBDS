@@ -7,6 +7,7 @@ import (
 
 	// . "github.com/ragilmaulana/restapi/tugas-golang/BranchDeliverySistem/entities"
 	. "bds/entities"
+	bank "bds/proto"
 	//"time"
 )
 
@@ -214,4 +215,126 @@ func (us UserService) PindahBukuService(idUser int64, tanggal string, rekeningAw
 
 	}
 	return idUser, nil
+}
+
+func (us UserService) FindByCifOrNikService(cif int64) (Nasabah, error) {
+	//Mencari nasabah berdasarkan cif atau nik
+	rows, err := us.DB.Query("SELECT * FROM nasabah WHERE cif = ? OR nik = ?", cif, cif)
+	if err != nil {
+		panic(err)
+	} else {
+		var nasabah Nasabah
+		for rows.Next() {
+			var (
+				cif int64
+				nik int64
+				nama string
+				tempat_lahir string
+				tanggal_lahir string
+				alamat string
+				no_telepon string
+			)
+
+			//Menampung hasil query
+			err2 := rows.Scan(&cif, &nik, &nama, &tempat_lahir, &tanggal_lahir, &alamat, &no_telepon)
+			if err2 != nil {
+				panic(err2)
+			}
+
+			nasabah = Nasabah{
+				Cif:           cif,
+				Nik:           nik,
+				Nama:          nama,
+				Tempat_lahir:  tempat_lahir,
+				Tanggal_lahir: tanggal_lahir,
+				Alamat:        alamat,
+				No_telepon:    no_telepon,
+			}
+			//fmt.Println("called")
+			//fmt.Println(nasabah)
+		}
+		return nasabah, nil
+	}
+}
+
+func (us UserService) BuatCifService(nasabah *bank.Nasabah) (*bank.Nasabah, error) {
+	//Memasukan data ke table nasabah
+	rows, err := us.DB.Exec("INSERT INTO nasabah (nik,nama,tempat_lahir,tanggal_lahir,alamat,no_telepon) values (?,?,?,?,?,?)",
+		nasabah.Nik, nasabah.Nama, nasabah.TempatLahir, nasabah.TanggalLahir, nasabah.Alamat, nasabah.NoTelepon)
+	//fmt.Println("nik", nasabah.Nik)
+	if err != nil {
+		panic(err)
+	} else {
+		status, _ := rows.RowsAffected()
+		if status > 0 {
+			response, err := us.FindByCifOrNikService(nasabah.Nik)
+			nasabah.Cif = response.Cif
+			return nasabah, err
+		} else {
+			return &bank.Nasabah{}, err
+		}
+	}
+}
+
+func (us UserService) FindLastRekService() (int, error) {
+	rows, err := us.DB.Query("SELECT no_rekening FROM nasabah_detail ORDER BY no_rekening DESC LIMIT 1")
+	if err != nil {
+		panic(err)
+	} else {
+		// looping data
+		var no_rekening int
+		for rows.Next() {
+
+			err2 := rows.Scan(&no_rekening)
+			if err2 != nil {
+				panic(err2)
+			}
+		}
+		return no_rekening, nil
+	}
+}
+
+func (us UserService) BuatTabunganService(nasabah *bank.NasabahDetail) (*bank.NasabahDetail, error) {
+	//Mencari nomor rekening yang dimasukan terakhir
+	last_no_rekening, _ := us.FindLastRekService()
+		last_no_rekening += 1
+
+	//Memasukan ke database nasabah_detail
+	//fmt.Println(last_no_rekening)
+	rows, err := us.DB.Exec("INSERT INTO nasabah_detail (cif, no_rekening, saldo) VALUES (?,?,?)",
+		nasabah.Cif, last_no_rekening, nasabah.Saldo)
+	if err != nil {
+		panic(err)
+	}
+
+	//Mencari nama dari method FindByCifOrNikService()
+	status, _ := rows.RowsAffected()
+	if status > 0 {
+		// call method print nasabah by cif
+		response, _ := us.FindByCifOrNikService(nasabah.Cif)
+		nasabah.Nama = response.Nama
+		nasabah.NoRekening = int64 (last_no_rekening)
+		return nasabah, nil
+	} else {
+		return &bank.NasabahDetail{}, nil
+	}
+}
+
+func (us UserService) UpdateNasabahService(nasabah *bank.Nasabah) (*bank.Nasabah, error) {
+	
+	rows, err := us.DB.Exec("UPDATE nasabah SET nik = ?, nama = ?, tempat_lahir = ?, tanggal_lahir = ?, alamat = ?, no_telepon = ? WHERE cif = ?",
+	nasabah.Nik, nasabah.Nama, nasabah.TempatLahir, nasabah.TanggalLahir, nasabah.Alamat, nasabah.NoTelepon, nasabah.Cif)
+	// fmt.Println(nasabah)
+	if err != nil {
+		panic(err)
+	}
+	
+	//var Respons *BranchDeliverySystem.NASABAH_INFO
+	status, _ := rows.RowsAffected()
+	//fmt.Println(idUser)
+	if status > 0 {
+		return nasabah, nil
+	} else {
+		return &bank.Nasabah{}, nil
+	}
 }

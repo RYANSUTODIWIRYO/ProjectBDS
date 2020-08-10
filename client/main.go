@@ -6,6 +6,7 @@ import (
 
 	ent "bds/entities"
 	teller "bds/client/teller"
+	cs "bds/client/cs"
 	conf "bds/config"
 	bank "bds/proto"
 )
@@ -13,10 +14,11 @@ import (
 func main()  {
 	menu:
 	//fmt.Println("\n=== Branch ===\n===  Delivery ===\n===   System\t===")
-	
-	fmt.Println("\n=== Branch ===")
-	fmt.Println(" === Delivery ===")
-	fmt.Println("  === System  =====")
+	fmt.Println("\n==================")
+	fmt.Println("===++ Branch ++===")
+	fmt.Println("===+ Delivery +===")
+	fmt.Println("===++ System ++===")
+	fmt.Println("==================")
 	
 	user, err := menuLogin()
 
@@ -30,7 +32,7 @@ func main()  {
 		case "teller":
 			teller.MenuTeller(user)
 		case "cs":
-			// client.MenuCs()
+			cs.MenuCS(user)
 		default:
 			fmt.Println("Id User atau Password salah...")	
 	}

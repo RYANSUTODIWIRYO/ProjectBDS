@@ -84,15 +84,11 @@ func CetakBuku(transaksi ent.Transaksi) (error) {
 	s := bank.NewBankServiceClient(conn)
 	response, err := s.CetakBuku(context.Background(), &bank.Transaksi{
 		NoRekening: transaksi.No_rekening,
-	})
-	
+	})	
 	if err != nil {
 		fmt.Println(err)
 		return err
 	}
-
-	// fmt.Println("priinnttt", response)
-
 
 	fmt.Println("No\tId\tTanggal\t\tJenis Transaksi\tNominal\tSaldo\tBerita")
 	no := 1

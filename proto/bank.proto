@@ -11,6 +11,16 @@ message User {
   string cabang   = 5;
 }
 
+message Nasabah {
+  int64 cif = 1;
+  int64 nik = 2;
+  string nama = 3;
+  string tempatLahir = 4;
+  string tanggalLahir = 5;
+  string alamat = 6;
+  string noTelepon = 7;
+}
+
 message NasabahDetail {
   int64 cif         = 1;
   string nama       = 2;
@@ -54,4 +64,8 @@ service BankService {
   rpc TarikTunai(Transaksi) returns (Transaksi);
   rpc CetakBuku(Transaksi) returns (ListTransaksi);
   rpc PindahBuku(TransaksiPB) returns (TransaksiPB);
+  rpc FindByCifOrNik(Nasabah) returns (Nasabah);
+  rpc BuatCif(Nasabah) returns (Nasabah);
+  rpc BuatTabungan(NasabahDetail) returns (NasabahDetail);
+  rpc UpdateNasabah(Nasabah) returns (Nasabah);
 }

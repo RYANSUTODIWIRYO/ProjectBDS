@@ -8,6 +8,16 @@ type User struct {
 	Cabang		string
 }
 
+type Nasabah struct {
+	Cif     		int64
+	Nik     		int64
+	Nama    		string
+	Tempat_lahir	string
+	Tanggal_lahir 	string
+	Alamat  		string
+	No_telepon 		string
+}
+
 type NasabahDetail struct {
 	Cif			int64
 	Nama		string

@@ -146,6 +146,101 @@ func (x *User) GetCabang() string {
 	return ""
 }
 
+type Nasabah struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Cif          int64  `protobuf:"varint,1,opt,name=cif,proto3" json:"cif,omitempty"`
+	Nik          int64  `protobuf:"varint,2,opt,name=nik,proto3" json:"nik,omitempty"`
+	Nama         string `protobuf:"bytes,3,opt,name=nama,proto3" json:"nama,omitempty"`
+	TempatLahir  string `protobuf:"bytes,4,opt,name=tempatLahir,proto3" json:"tempatLahir,omitempty"`
+	TanggalLahir string `protobuf:"bytes,5,opt,name=tanggalLahir,proto3" json:"tanggalLahir,omitempty"`
+	Alamat       string `protobuf:"bytes,6,opt,name=alamat,proto3" json:"alamat,omitempty"`
+	NoTelepon    string `protobuf:"bytes,7,opt,name=noTelepon,proto3" json:"noTelepon,omitempty"`
+}
+
+func (x *Nasabah) Reset() {
+	*x = Nasabah{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_bank_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Nasabah) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Nasabah) ProtoMessage() {}
+
+func (x *Nasabah) ProtoReflect() protoreflect.Message {
+	mi := &file_bank_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Nasabah.ProtoReflect.Descriptor instead.
+func (*Nasabah) Descriptor() ([]byte, []int) {
+	return file_bank_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *Nasabah) GetCif() int64 {
+	if x != nil {
+		return x.Cif
+	}
+	return 0
+}
+
+func (x *Nasabah) GetNik() int64 {
+	if x != nil {
+		return x.Nik
+	}
+	return 0
+}
+
+func (x *Nasabah) GetNama() string {
+	if x != nil {
+		return x.Nama
+	}
+	return ""
+}
+
+func (x *Nasabah) GetTempatLahir() string {
+	if x != nil {
+		return x.TempatLahir
+	}
+	return ""
+}
+
+func (x *Nasabah) GetTanggalLahir() string {
+	if x != nil {
+		return x.TanggalLahir
+	}
+	return ""
+}
+
+func (x *Nasabah) GetAlamat() string {
+	if x != nil {
+		return x.Alamat
+	}
+	return ""
+}
+
+func (x *Nasabah) GetNoTelepon() string {
+	if x != nil {
+		return x.NoTelepon
+	}
+	return ""
+}
+
 type NasabahDetail struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -160,7 +255,7 @@ type NasabahDetail struct {
 func (x *NasabahDetail) Reset() {
 	*x = NasabahDetail{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_bank_proto_msgTypes[2]
+		mi := &file_bank_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -173,7 +268,7 @@ func (x *NasabahDetail) String() string {
 func (*NasabahDetail) ProtoMessage() {}
 
 func (x *NasabahDetail) ProtoReflect() protoreflect.Message {
-	mi := &file_bank_proto_msgTypes[2]
+	mi := &file_bank_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -186,7 +281,7 @@ func (x *NasabahDetail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NasabahDetail.ProtoReflect.Descriptor instead.
 func (*NasabahDetail) Descriptor() ([]byte, []int) {
-	return file_bank_proto_rawDescGZIP(), []int{2}
+	return file_bank_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *NasabahDetail) GetCif() int64 {
@@ -235,7 +330,7 @@ type Transaksi struct {
 func (x *Transaksi) Reset() {
 	*x = Transaksi{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_bank_proto_msgTypes[3]
+		mi := &file_bank_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -248,7 +343,7 @@ func (x *Transaksi) String() string {
 func (*Transaksi) ProtoMessage() {}
 
 func (x *Transaksi) ProtoReflect() protoreflect.Message {
-	mi := &file_bank_proto_msgTypes[3]
+	mi := &file_bank_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -261,7 +356,7 @@ func (x *Transaksi) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Transaksi.ProtoReflect.Descriptor instead.
 func (*Transaksi) Descriptor() ([]byte, []int) {
-	return file_bank_proto_rawDescGZIP(), []int{3}
+	return file_bank_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Transaksi) GetIdTransaksi() int64 {
@@ -336,7 +431,7 @@ type TransaksiPB struct {
 func (x *TransaksiPB) Reset() {
 	*x = TransaksiPB{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_bank_proto_msgTypes[4]
+		mi := &file_bank_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -349,7 +444,7 @@ func (x *TransaksiPB) String() string {
 func (*TransaksiPB) ProtoMessage() {}
 
 func (x *TransaksiPB) ProtoReflect() protoreflect.Message {
-	mi := &file_bank_proto_msgTypes[4]
+	mi := &file_bank_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -362,7 +457,7 @@ func (x *TransaksiPB) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TransaksiPB.ProtoReflect.Descriptor instead.
 func (*TransaksiPB) Descriptor() ([]byte, []int) {
-	return file_bank_proto_rawDescGZIP(), []int{4}
+	return file_bank_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *TransaksiPB) GetIdUser() int64 {
@@ -418,7 +513,7 @@ type Status struct {
 func (x *Status) Reset() {
 	*x = Status{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_bank_proto_msgTypes[5]
+		mi := &file_bank_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -431,7 +526,7 @@ func (x *Status) String() string {
 func (*Status) ProtoMessage() {}
 
 func (x *Status) ProtoReflect() protoreflect.Message {
-	mi := &file_bank_proto_msgTypes[5]
+	mi := &file_bank_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -444,7 +539,7 @@ func (x *Status) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Status.ProtoReflect.Descriptor instead.
 func (*Status) Descriptor() ([]byte, []int) {
-	return file_bank_proto_rawDescGZIP(), []int{5}
+	return file_bank_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *Status) GetStatus() int32 {
@@ -465,7 +560,7 @@ type ListTransaksi struct {
 func (x *ListTransaksi) Reset() {
 	*x = ListTransaksi{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_bank_proto_msgTypes[6]
+		mi := &file_bank_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -478,7 +573,7 @@ func (x *ListTransaksi) String() string {
 func (*ListTransaksi) ProtoMessage() {}
 
 func (x *ListTransaksi) ProtoReflect() protoreflect.Message {
-	mi := &file_bank_proto_msgTypes[6]
+	mi := &file_bank_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -491,7 +586,7 @@ func (x *ListTransaksi) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListTransaksi.ProtoReflect.Descriptor instead.
 func (*ListTransaksi) Descriptor() ([]byte, []int) {
-	return file_bank_proto_rawDescGZIP(), []int{6}
+	return file_bank_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ListTransaksi) GetTransaksi() []*Transaksi {
@@ -514,7 +609,19 @@ var file_bank_proto_rawDesc = []byte{
 	0x61, 0x55, 0x73, 0x65, 0x72, 0x12, 0x12, 0x0a, 0x04, 0x72, 0x6f, 0x6c, 0x65, 0x18, 0x04, 0x20,
 	0x01, 0x28, 0x09, 0x52, 0x04, 0x72, 0x6f, 0x6c, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x63, 0x61, 0x62,
 	0x61, 0x6e, 0x67, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x63, 0x61, 0x62, 0x61, 0x6e,
-	0x67, 0x22, 0x6b, 0x0a, 0x0d, 0x4e, 0x61, 0x73, 0x61, 0x62, 0x61, 0x68, 0x44, 0x65, 0x74, 0x61,
+	0x67, 0x22, 0xbd, 0x01, 0x0a, 0x07, 0x4e, 0x61, 0x73, 0x61, 0x62, 0x61, 0x68, 0x12, 0x10, 0x0a,
+	0x03, 0x63, 0x69, 0x66, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x63, 0x69, 0x66, 0x12,
+	0x10, 0x0a, 0x03, 0x6e, 0x69, 0x6b, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x6e, 0x69,
+	0x6b, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x61, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x04, 0x6e, 0x61, 0x6d, 0x61, 0x12, 0x20, 0x0a, 0x0b, 0x74, 0x65, 0x6d, 0x70, 0x61, 0x74, 0x4c,
+	0x61, 0x68, 0x69, 0x72, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x74, 0x65, 0x6d, 0x70,
+	0x61, 0x74, 0x4c, 0x61, 0x68, 0x69, 0x72, 0x12, 0x22, 0x0a, 0x0c, 0x74, 0x61, 0x6e, 0x67, 0x67,
+	0x61, 0x6c, 0x4c, 0x61, 0x68, 0x69, 0x72, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x74,
+	0x61, 0x6e, 0x67, 0x67, 0x61, 0x6c, 0x4c, 0x61, 0x68, 0x69, 0x72, 0x12, 0x16, 0x0a, 0x06, 0x61,
+	0x6c, 0x61, 0x6d, 0x61, 0x74, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x61, 0x6c, 0x61,
+	0x6d, 0x61, 0x74, 0x12, 0x1c, 0x0a, 0x09, 0x6e, 0x6f, 0x54, 0x65, 0x6c, 0x65, 0x70, 0x6f, 0x6e,
+	0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x6e, 0x6f, 0x54, 0x65, 0x6c, 0x65, 0x70, 0x6f,
+	0x6e, 0x22, 0x6b, 0x0a, 0x0d, 0x4e, 0x61, 0x73, 0x61, 0x62, 0x61, 0x68, 0x44, 0x65, 0x74, 0x61,
 	0x69, 0x6c, 0x12, 0x10, 0x0a, 0x03, 0x63, 0x69, 0x66, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52,
 	0x03, 0x63, 0x69, 0x66, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x61, 0x18, 0x02, 0x20, 0x01,
 	0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x61, 0x12, 0x1e, 0x0a, 0x0a, 0x6e, 0x6f, 0x52, 0x65,
@@ -556,7 +663,7 @@ var file_bank_proto_rawDesc = []byte{
 	0x4c, 0x69, 0x73, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x6b, 0x73, 0x69, 0x12, 0x2e, 0x0a,
 	0x09, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x6b, 0x73, 0x69, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b,
 	0x32, 0x10, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x6b,
-	0x73, 0x69, 0x52, 0x09, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x6b, 0x73, 0x69, 0x32, 0xc0, 0x02,
+	0x73, 0x69, 0x52, 0x09, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x6b, 0x73, 0x69, 0x32, 0x8a, 0x04,
 	0x0a, 0x0b, 0x42, 0x61, 0x6e, 0x6b, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x21, 0x0a,
 	0x05, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x12, 0x0b, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x55,
 	0x73, 0x65, 0x72, 0x1a, 0x0b, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x55, 0x73, 0x65, 0x72,
@@ -577,7 +684,20 @@ var file_bank_proto_rawDesc = []byte{
 	0x6e, 0x64, 0x61, 0x68, 0x42, 0x75, 0x6b, 0x75, 0x12, 0x12, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
 	0x2e, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x6b, 0x73, 0x69, 0x50, 0x42, 0x1a, 0x12, 0x2e, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x6b, 0x73, 0x69, 0x50, 0x42,
-	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x12, 0x30, 0x0a, 0x0e, 0x46, 0x69, 0x6e, 0x64, 0x42, 0x79, 0x43, 0x69, 0x66, 0x4f, 0x72, 0x4e,
+	0x69, 0x6b, 0x12, 0x0e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x4e, 0x61, 0x73, 0x61, 0x62,
+	0x61, 0x68, 0x1a, 0x0e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x4e, 0x61, 0x73, 0x61, 0x62,
+	0x61, 0x68, 0x12, 0x29, 0x0a, 0x07, 0x42, 0x75, 0x61, 0x74, 0x43, 0x69, 0x66, 0x12, 0x0e, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x4e, 0x61, 0x73, 0x61, 0x62, 0x61, 0x68, 0x1a, 0x0e, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x4e, 0x61, 0x73, 0x61, 0x62, 0x61, 0x68, 0x12, 0x3a, 0x0a,
+	0x0c, 0x42, 0x75, 0x61, 0x74, 0x54, 0x61, 0x62, 0x75, 0x6e, 0x67, 0x61, 0x6e, 0x12, 0x14, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x4e, 0x61, 0x73, 0x61, 0x62, 0x61, 0x68, 0x44, 0x65, 0x74,
+	0x61, 0x69, 0x6c, 0x1a, 0x14, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x4e, 0x61, 0x73, 0x61,
+	0x62, 0x61, 0x68, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x12, 0x2f, 0x0a, 0x0d, 0x55, 0x70, 0x64,
+	0x61, 0x74, 0x65, 0x4e, 0x61, 0x73, 0x61, 0x62, 0x61, 0x68, 0x12, 0x0e, 0x2e, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x2e, 0x4e, 0x61, 0x73, 0x61, 0x62, 0x61, 0x68, 0x1a, 0x0e, 0x2e, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x2e, 0x4e, 0x61, 0x73, 0x61, 0x62, 0x61, 0x68, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x33,
 }
 
 var (
@@ -592,37 +712,46 @@ func file_bank_proto_rawDescGZIP() []byte {
 	return file_bank_proto_rawDescData
 }
 
-var file_bank_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_bank_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_bank_proto_goTypes = []interface{}{
 	(*Empty)(nil),         // 0: proto.Empty
 	(*User)(nil),          // 1: proto.User
-	(*NasabahDetail)(nil), // 2: proto.NasabahDetail
-	(*Transaksi)(nil),     // 3: proto.Transaksi
-	(*TransaksiPB)(nil),   // 4: proto.TransaksiPB
-	(*Status)(nil),        // 5: proto.Status
-	(*ListTransaksi)(nil), // 6: proto.ListTransaksi
+	(*Nasabah)(nil),       // 2: proto.Nasabah
+	(*NasabahDetail)(nil), // 3: proto.NasabahDetail
+	(*Transaksi)(nil),     // 4: proto.Transaksi
+	(*TransaksiPB)(nil),   // 5: proto.TransaksiPB
+	(*Status)(nil),        // 6: proto.Status
+	(*ListTransaksi)(nil), // 7: proto.ListTransaksi
 }
 var file_bank_proto_depIdxs = []int32{
-	2, // 0: proto.TransaksiPB.nasabahDebit:type_name -> proto.NasabahDetail
-	2, // 1: proto.TransaksiPB.nasabahKredit:type_name -> proto.NasabahDetail
-	3, // 2: proto.ListTransaksi.transaksi:type_name -> proto.Transaksi
-	1, // 3: proto.BankService.Login:input_type -> proto.User
-	2, // 4: proto.BankService.CariNasabahDetail:input_type -> proto.NasabahDetail
-	3, // 5: proto.BankService.SetorTunai:input_type -> proto.Transaksi
-	3, // 6: proto.BankService.TarikTunai:input_type -> proto.Transaksi
-	3, // 7: proto.BankService.CetakBuku:input_type -> proto.Transaksi
-	4, // 8: proto.BankService.PindahBuku:input_type -> proto.TransaksiPB
-	1, // 9: proto.BankService.Login:output_type -> proto.User
-	2, // 10: proto.BankService.CariNasabahDetail:output_type -> proto.NasabahDetail
-	3, // 11: proto.BankService.SetorTunai:output_type -> proto.Transaksi
-	3, // 12: proto.BankService.TarikTunai:output_type -> proto.Transaksi
-	6, // 13: proto.BankService.CetakBuku:output_type -> proto.ListTransaksi
-	4, // 14: proto.BankService.PindahBuku:output_type -> proto.TransaksiPB
-	9, // [9:15] is the sub-list for method output_type
-	3, // [3:9] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	3,  // 0: proto.TransaksiPB.nasabahDebit:type_name -> proto.NasabahDetail
+	3,  // 1: proto.TransaksiPB.nasabahKredit:type_name -> proto.NasabahDetail
+	4,  // 2: proto.ListTransaksi.transaksi:type_name -> proto.Transaksi
+	1,  // 3: proto.BankService.Login:input_type -> proto.User
+	3,  // 4: proto.BankService.CariNasabahDetail:input_type -> proto.NasabahDetail
+	4,  // 5: proto.BankService.SetorTunai:input_type -> proto.Transaksi
+	4,  // 6: proto.BankService.TarikTunai:input_type -> proto.Transaksi
+	4,  // 7: proto.BankService.CetakBuku:input_type -> proto.Transaksi
+	5,  // 8: proto.BankService.PindahBuku:input_type -> proto.TransaksiPB
+	2,  // 9: proto.BankService.FindByCifOrNik:input_type -> proto.Nasabah
+	2,  // 10: proto.BankService.BuatCif:input_type -> proto.Nasabah
+	3,  // 11: proto.BankService.BuatTabungan:input_type -> proto.NasabahDetail
+	2,  // 12: proto.BankService.UpdateNasabah:input_type -> proto.Nasabah
+	1,  // 13: proto.BankService.Login:output_type -> proto.User
+	3,  // 14: proto.BankService.CariNasabahDetail:output_type -> proto.NasabahDetail
+	4,  // 15: proto.BankService.SetorTunai:output_type -> proto.Transaksi
+	4,  // 16: proto.BankService.TarikTunai:output_type -> proto.Transaksi
+	7,  // 17: proto.BankService.CetakBuku:output_type -> proto.ListTransaksi
+	5,  // 18: proto.BankService.PindahBuku:output_type -> proto.TransaksiPB
+	2,  // 19: proto.BankService.FindByCifOrNik:output_type -> proto.Nasabah
+	2,  // 20: proto.BankService.BuatCif:output_type -> proto.Nasabah
+	3,  // 21: proto.BankService.BuatTabungan:output_type -> proto.NasabahDetail
+	2,  // 22: proto.BankService.UpdateNasabah:output_type -> proto.Nasabah
+	13, // [13:23] is the sub-list for method output_type
+	3,  // [3:13] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_bank_proto_init() }
@@ -656,7 +785,7 @@ func file_bank_proto_init() {
 			}
 		}
 		file_bank_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*NasabahDetail); i {
+			switch v := v.(*Nasabah); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -668,7 +797,7 @@ func file_bank_proto_init() {
 			}
 		}
 		file_bank_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Transaksi); i {
+			switch v := v.(*NasabahDetail); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -680,7 +809,7 @@ func file_bank_proto_init() {
 			}
 		}
 		file_bank_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TransaksiPB); i {
+			switch v := v.(*Transaksi); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -692,7 +821,7 @@ func file_bank_proto_init() {
 			}
 		}
 		file_bank_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Status); i {
+			switch v := v.(*TransaksiPB); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -704,6 +833,18 @@ func file_bank_proto_init() {
 			}
 		}
 		file_bank_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Status); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_bank_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ListTransaksi); i {
 			case 0:
 				return &v.state
@@ -722,7 +863,7 @@ func file_bank_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_bank_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -754,6 +895,10 @@ type BankServiceClient interface {
 	TarikTunai(ctx context.Context, in *Transaksi, opts ...grpc.CallOption) (*Transaksi, error)
 	CetakBuku(ctx context.Context, in *Transaksi, opts ...grpc.CallOption) (*ListTransaksi, error)
 	PindahBuku(ctx context.Context, in *TransaksiPB, opts ...grpc.CallOption) (*TransaksiPB, error)
+	FindByCifOrNik(ctx context.Context, in *Nasabah, opts ...grpc.CallOption) (*Nasabah, error)
+	BuatCif(ctx context.Context, in *Nasabah, opts ...grpc.CallOption) (*Nasabah, error)
+	BuatTabungan(ctx context.Context, in *NasabahDetail, opts ...grpc.CallOption) (*NasabahDetail, error)
+	UpdateNasabah(ctx context.Context, in *Nasabah, opts ...grpc.CallOption) (*Nasabah, error)
 }
 
 type bankServiceClient struct {
@@ -818,6 +963,42 @@ func (c *bankServiceClient) PindahBuku(ctx context.Context, in *TransaksiPB, opt
 	return out, nil
 }
 
+func (c *bankServiceClient) FindByCifOrNik(ctx context.Context, in *Nasabah, opts ...grpc.CallOption) (*Nasabah, error) {
+	out := new(Nasabah)
+	err := c.cc.Invoke(ctx, "/proto.BankService/FindByCifOrNik", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bankServiceClient) BuatCif(ctx context.Context, in *Nasabah, opts ...grpc.CallOption) (*Nasabah, error) {
+	out := new(Nasabah)
+	err := c.cc.Invoke(ctx, "/proto.BankService/BuatCif", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bankServiceClient) BuatTabungan(ctx context.Context, in *NasabahDetail, opts ...grpc.CallOption) (*NasabahDetail, error) {
+	out := new(NasabahDetail)
+	err := c.cc.Invoke(ctx, "/proto.BankService/BuatTabungan", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bankServiceClient) UpdateNasabah(ctx context.Context, in *Nasabah, opts ...grpc.CallOption) (*Nasabah, error) {
+	out := new(Nasabah)
+	err := c.cc.Invoke(ctx, "/proto.BankService/UpdateNasabah", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BankServiceServer is the server API for BankService service.
 type BankServiceServer interface {
 	Login(context.Context, *User) (*User, error)
@@ -826,6 +1007,10 @@ type BankServiceServer interface {
 	TarikTunai(context.Context, *Transaksi) (*Transaksi, error)
 	CetakBuku(context.Context, *Transaksi) (*ListTransaksi, error)
 	PindahBuku(context.Context, *TransaksiPB) (*TransaksiPB, error)
+	FindByCifOrNik(context.Context, *Nasabah) (*Nasabah, error)
+	BuatCif(context.Context, *Nasabah) (*Nasabah, error)
+	BuatTabungan(context.Context, *NasabahDetail) (*NasabahDetail, error)
+	UpdateNasabah(context.Context, *Nasabah) (*Nasabah, error)
 }
 
 // UnimplementedBankServiceServer can be embedded to have forward compatible implementations.
@@ -849,6 +1034,18 @@ func (*UnimplementedBankServiceServer) CetakBuku(context.Context, *Transaksi) (*
 }
 func (*UnimplementedBankServiceServer) PindahBuku(context.Context, *TransaksiPB) (*TransaksiPB, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PindahBuku not implemented")
+}
+func (*UnimplementedBankServiceServer) FindByCifOrNik(context.Context, *Nasabah) (*Nasabah, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FindByCifOrNik not implemented")
+}
+func (*UnimplementedBankServiceServer) BuatCif(context.Context, *Nasabah) (*Nasabah, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BuatCif not implemented")
+}
+func (*UnimplementedBankServiceServer) BuatTabungan(context.Context, *NasabahDetail) (*NasabahDetail, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BuatTabungan not implemented")
+}
+func (*UnimplementedBankServiceServer) UpdateNasabah(context.Context, *Nasabah) (*Nasabah, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateNasabah not implemented")
 }
 
 func RegisterBankServiceServer(s *grpc.Server, srv BankServiceServer) {
@@ -963,6 +1160,78 @@ func _BankService_PindahBuku_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BankService_FindByCifOrNik_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Nasabah)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BankServiceServer).FindByCifOrNik(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.BankService/FindByCifOrNik",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BankServiceServer).FindByCifOrNik(ctx, req.(*Nasabah))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BankService_BuatCif_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Nasabah)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BankServiceServer).BuatCif(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.BankService/BuatCif",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BankServiceServer).BuatCif(ctx, req.(*Nasabah))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BankService_BuatTabungan_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(NasabahDetail)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BankServiceServer).BuatTabungan(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.BankService/BuatTabungan",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BankServiceServer).BuatTabungan(ctx, req.(*NasabahDetail))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BankService_UpdateNasabah_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Nasabah)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BankServiceServer).UpdateNasabah(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.BankService/UpdateNasabah",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BankServiceServer).UpdateNasabah(ctx, req.(*Nasabah))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _BankService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "proto.BankService",
 	HandlerType: (*BankServiceServer)(nil),
@@ -990,6 +1259,22 @@ var _BankService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "PindahBuku",
 			Handler:    _BankService_PindahBuku_Handler,
+		},
+		{
+			MethodName: "FindByCifOrNik",
+			Handler:    _BankService_FindByCifOrNik_Handler,
+		},
+		{
+			MethodName: "BuatCif",
+			Handler:    _BankService_BuatCif_Handler,
+		},
+		{
+			MethodName: "BuatTabungan",
+			Handler:    _BankService_BuatTabungan_Handler,
+		},
+		{
+			MethodName: "UpdateNasabah",
+			Handler:    _BankService_UpdateNasabah_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
