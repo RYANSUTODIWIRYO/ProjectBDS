@@ -1,0 +1,57 @@
+syntax = "proto3";
+package proto;
+
+message Empty {}
+
+message User {
+  int64 idUser    = 1;
+  string password = 2;
+  string namaUser = 3;
+  string role     = 4;
+  string cabang   = 5;
+}
+
+message NasabahDetail {
+  int64 cif         = 1;
+  string nama       = 2;
+  int64 noRekening  = 3;
+  int64 saldo       = 4;
+}
+
+message Transaksi {
+  int64   idTransaksi     = 1;
+  int64   idUser          = 2;
+  int64   noRekening      = 3;
+  string  tanggal         = 4;
+  string  jenisTransaksi  = 5;
+  int64   nominal         = 6;
+  int64   saldo           = 7;
+  string  berita          = 8;
+}
+
+
+message TransaksiPB {
+  int64           idUser        = 1;
+  string          tanggal       = 2;
+  NasabahDetail   nasabahDebit  = 3;
+  NasabahDetail   nasabahKredit = 4;
+  int64           nominal       = 5;
+  string          berita        = 6;
+}
+
+message Status {
+  int32 status  = 1;
+}
+
+message ListTransaksi {
+  repeated Transaksi transaksi = 1;
+}
+
+service BankService {
+  rpc Login(User) returns (User);
+  rpc CariNasabahDetail(NasabahDetail) returns (NasabahDetail);
+  rpc SetorTunai(Transaksi) returns (Transaksi);
+  rpc TarikTunai(Transaksi) returns (Transaksi);
+  rpc CetakBuku(Transaksi) returns (ListTransaksi);
+  rpc PindahBuku(TransaksiPB) returns (TransaksiPB);
+}
