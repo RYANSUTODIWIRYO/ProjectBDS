@@ -13,15 +13,14 @@ import (
 
 func main()  {
 	menu:
-	//fmt.Println("\n=== Branch ===\n===  Delivery ===\n===   System\t===")
 	fmt.Println("\n==================")
 	fmt.Println("===++ Branch ++===")
 	fmt.Println("===+ Delivery +===")
 	fmt.Println("===++ System ++===")
 	fmt.Println("==================")
 	
+	//Masuk Menu Login
 	user, err := menuLogin()
-
 	if err != nil {
 		fmt.Println(err)
 		goto menu
@@ -73,10 +72,14 @@ func login(id_user int64, password string) (ent.User, error){
 
 	//Memanggil funcion login() dari server
 	service := bank.NewBankServiceClient(conn)
-	response, err := service.Login(context.Background(), &bank.User{
+	response, err2 := service.Login(context.Background(), &bank.User{
 		IdUser: id_user,
 		Password: password,
 	})
+	if err2 != nil {
+		fmt.Println("Gagal koneksi ke server..")
+		return ent.User{}, err2
+	}
 
 	//Memasukan nilai yang didapat
 	user := ent.User{

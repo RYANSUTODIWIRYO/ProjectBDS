@@ -48,7 +48,7 @@ func TarikTunai(transaksi ent.Transaksi) (ent.Transaksi, error) {
 	}
 	defer conn.Close()
 
-	//Memanggil funtcion TarikTunai() dari server
+	//Memanggil function TarikTunai() dari server
 	s := bank.NewBankServiceClient(conn)
 	response, err := s.TarikTunai(context.Background(), &bank.Transaksi{
 		IdUser: transaksi.Id_user,
@@ -90,6 +90,7 @@ func CetakBuku(transaksi ent.Transaksi) (error) {
 		return err
 	}
 
+	//Print hasil dari CetakBuku()
 	fmt.Println("No\tId\tTanggal\t\tJenis Transaksi\tNominal\tSaldo\tBerita")
 	no := 1
 	for _ , value := range response.Transaksi{
@@ -115,7 +116,7 @@ func PindahBuku(transaksiPB ent.TransaksiPB) (ent.TransaksiPB, error) {
 	}
 	defer conn.Close()
 
-	//Memanggil funtcion TarikTunai() dari server
+	//Memanggil funtcion PindahBuku() dari server
 	s := bank.NewBankServiceClient(conn)
 	response, err := s.PindahBuku(context.Background(), &bank.TransaksiPB{
 		IdUser				: transaksiPB.Id_user,
@@ -125,10 +126,9 @@ func PindahBuku(transaksiPB ent.TransaksiPB) (ent.TransaksiPB, error) {
 		Nominal: transaksiPB.Nominal,
 		Berita: transaksiPB.Berita,
 	})
+	//fmt.Println("respone", response.Nominal)
 
-	fmt.Println("respone", response.Nominal)
-
-	//Memasukan nilai yang didapat
+	//Mengembalikan nilai yang didapat
 	if response.IdUser > 0 { //berhasil
 		return transaksiPB, nil
 	} else if response.Berita == "Saldo Tidak Cukup" { //berhasil, saldo tidak cukup

@@ -11,10 +11,7 @@ import (
 )
 
 func MenuTeller(user ent.User){
-	//fmt.Println("\n=== Menu Teller ===")
-	// fmt.Println(user)
-	// fmt.Println("Teller Masuk pak ekoooooooooo")
-	
+
 	var pil int
 	menu := ("=== Menu Teller ===\n" +
 		"1.  Setor Tunai\n" +
@@ -23,6 +20,7 @@ func MenuTeller(user ent.User){
 		"4.  Cetak Buku\n" +
 		"99. Logout")
 
+	//Pilih Menu
 	for pil != 99 {
 		fmt.Println("\nId User =", user.Id_user)
 		fmt.Println(menu)
@@ -31,16 +29,12 @@ func MenuTeller(user ent.User){
 
 		switch pil {
 		case 1:
-			// fmt.Println("Setor Tunai")
 			MenuSetorTunai(user.Id_user)
 		case 2:
-			//fmt.Println("Tarik Tunai")
 			MenuTarikTunai(user.Id_user)
 		case 3:
-			//fmt.Println("Pindah Buku")
 			MenuPindahBuku(user.Id_user)
 		case 4:
-			//fmt.Println("Cetak Buku")
 			MenuCetakBuku()
 		case 99:
 			fmt.Println("Berhasil Logout")
@@ -87,7 +81,7 @@ func MenuSetorTunai(idUser int64) {
 		tanggal		string
 	)
 
-	//Input id user dan password
+	//Input data setoran
 	fmt.Print("\n=== Setor Tunai ===\n")
 	fmt.Print("No Rekening\t: ")
 	fmt.Scan(&rekTujuan)
@@ -101,6 +95,7 @@ func MenuSetorTunai(idUser int64) {
 	if err != nil {
 		fmt.Println(err)
 		//return ent.User{}, err
+		return
 	} else if response.Nama == "" {
 		fmt.Println("Nomor Rekening Salah...")
 		return
@@ -117,6 +112,7 @@ func MenuSetorTunai(idUser int64) {
 		Berita : berita,
 	}
 
+	//Proses Konfirmasi
 	for !(proses == "y") && !(proses == "n") {
 		fmt.Print("\n=== Konfirmasi ===\n")
 		fmt.Println("Rek Tujuan\t:", rekTujuan)
@@ -154,9 +150,7 @@ func MenuSetorTunai(idUser int64) {
 }
 
 func MenuTarikTunai(idUser int64) {
-	
 	var (
-		//nasabah		ent.NasabahDetail
 		rekTujuan	int64
 		nominal		int64
 		proses		string
@@ -164,7 +158,7 @@ func MenuTarikTunai(idUser int64) {
 		tanggal		string
 	)
 
-	//Input id user dan password
+	// Input rekening dan nominal
 	fmt.Print("\n=== Tarik Tunai ===\n")
 	fmt.Print("No Rekening\t: ")
 	fmt.Scan(&rekTujuan)
@@ -178,6 +172,7 @@ func MenuTarikTunai(idUser int64) {
 	if err != nil {
 		fmt.Println(err)
 		//return ent.User{}, err
+		return
 	} else if response.Nama == "" {
 		fmt.Println("Nomor Rekening Salah...")
 		return
@@ -194,6 +189,7 @@ func MenuTarikTunai(idUser int64) {
 		Berita : berita,
 	}
 
+	//Proses Konfirmasi
 	for !(proses == "y") && !(proses == "n") {
 		fmt.Print("\n=== Konfirmasi ===\n")
 		fmt.Println("Rek Tujuan\t:", rekTujuan)
@@ -236,15 +232,10 @@ func MenuTarikTunai(idUser int64) {
 
 func MenuCetakBuku() {
 	var (
-		//nasabah		ent.NasabahDetail
 		rekening	int64
-		// nominal		int64
-		// proses		string
-		// berita		string
-		// tanggal		string
 	)
 
-	//Input id user dan password
+	// Input No Rekening
 	fmt.Print("\n=== Cetak Buku ===\n")
 	fmt.Print("No Rekening\t: ")
 	fmt.Scan(&rekening)
@@ -260,6 +251,7 @@ func MenuCetakBuku() {
 		return
 	}
 	
+	// Memanggil function cetak buku
 	transaksi := ent.Transaksi{No_rekening : rekening}
 	err2 := CetakBuku(transaksi)
 	if err2 != nil {
@@ -268,9 +260,7 @@ func MenuCetakBuku() {
 }
 
 func MenuPindahBuku(idUser int64) {
-	
 	var (
-		//nasabah		ent.NasabahDetail
 		rekeningDebit	int64
 		rekeningKredit	int64
 		nominal			int64
@@ -279,7 +269,7 @@ func MenuPindahBuku(idUser int64) {
 		tanggal			string
 	)
 
-	//Input id user dan password
+	//Input data untuk pindah buku
 	fmt.Print("\n=== Pindah Buku ===\n")
 	fmt.Print("Rekening Debit\t: ")
 	fmt.Scan(&rekeningDebit)
@@ -294,19 +284,18 @@ func MenuPindahBuku(idUser int64) {
 	response, err := CariNasabah(rekeningDebit)
 	if err != nil {
 		fmt.Println(err)
-		//return ent.User{}, err
+		return
 	} else if response.Nama == "" {
 		fmt.Println("Nomor rekening debit salah...")
 		return
 	}
-
 	
 	// Cek Data Rekening Kredit
 	response2, err2 := CariNasabah(rekeningKredit)
 	if err2 != nil {
 		fmt.Println(err2)
-		//return ent.User{}, err
-	} else if response.Nama == "" {
+		return
+	} else if response2.Nama == "" {
 		fmt.Println("Nomor rekening tujuan salah....")
 		return
 	}
@@ -322,6 +311,7 @@ func MenuPindahBuku(idUser int64) {
 		Berita 			: berita,
 	}
 
+	// Proses Konfirmasi
 	for !(proses == "y") && !(proses == "n") {
 		fmt.Print("\n=== Konfirmasi ===\n")
 		fmt.Println("Rek.Debit\t:", rekeningDebit)

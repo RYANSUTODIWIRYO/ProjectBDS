@@ -102,7 +102,7 @@ func (us UserService) SetorTunaiService(transaksi Transaksi, nasabah NasabahDeta
 		return 0, Transaksi{}, err
 	} else {
 		// status, _ := rows.RowsAffected()
-		fmt.Println("nihhhhh", transaksi)
+		// fmt.Println("nihhhhh", transaksi)
 		transaksi.Saldo = nasabah.Saldo
 		rows.RowsAffected()
 		return 1, transaksi, nil
